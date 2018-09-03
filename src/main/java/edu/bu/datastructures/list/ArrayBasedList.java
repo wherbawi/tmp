@@ -24,7 +24,7 @@ public class ArrayBasedList<T> implements List<T> {
 
 	public void set(int i, T x) {
 		// TODO: check if i>= size? i<0?-->throw exception. size exceeds the array
-		// capacity?-->resize the array
+		// capacity?-->resize the array. not allowed
 		elements[i] = x;
 	}
 
