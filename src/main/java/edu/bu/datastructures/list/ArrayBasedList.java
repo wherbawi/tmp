@@ -18,7 +18,7 @@ public class ArrayBasedList<T> implements List<T> {
 	}
 
 	public T get(int i) {
-		// TODO:do bounds check (negative i? empty data? i>size?)->throw exception
+		// TODO:do bounds check (negative i? empty data? i>size?)->throw exception.
 		return elements[i];
 	}
 
