@@ -18,17 +18,6 @@ public class LinkedList<T> implements List<T> {
 		return data;
 	}
 
-	private T getData(int index) {
-		int i = 0;
-		Node<T> currData = head;
-		while (i != index) {
-			currData = currData.next;
-			i++;
-		}
-
-		return currData.data;
-	}
-
 	public void set(int i, T x) {
 		// TODO: impelement the set method and its test cases
 	}
@@ -39,11 +28,8 @@ public class LinkedList<T> implements List<T> {
 		newNode.data = x;
 
 		if (index == 0) {
-			newNode.next = head.next;
-			head = newNode;
-			size++;
+			addFirstPositionNode(newNode);
 			return;
-
 		}
 
 		int i = 0;
@@ -62,14 +48,13 @@ public class LinkedList<T> implements List<T> {
 		Node<T> newNode = new Node<T>();
 		newNode.data = x;
 		newNode.next = null;
-
 		if (size == 0) {
 			head = newNode;
 			tail = newNode;
+		} else {
+			tail.next = newNode;
+			tail = newNode;
 		}
-
-		tail.next = newNode;
-		tail = newNode;
 		size++;
 	}
 
@@ -80,6 +65,23 @@ public class LinkedList<T> implements List<T> {
 
 	public int getSize() {
 		return size;
+	}
+
+	private T getData(int index) {
+		int i = 0;
+		Node<T> currData = head;
+		while (i != index) {
+			currData = currData.next;
+			i++;
+		}
+
+		return currData.data;
+	}
+
+	private void addFirstPositionNode(Node<T> newNode) {
+		newNode.next = head;
+		head = newNode;
+		size++;
 	}
 
 	private class Node<T> {
