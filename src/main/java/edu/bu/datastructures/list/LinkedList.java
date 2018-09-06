@@ -6,9 +6,6 @@ public class LinkedList<T> implements List<T> {
 	private int size;
 
 	public LinkedList() {
-		head = new Node<>();
-		tail = new Node<>();
-		size = 0;
 	}
 
 	public int size() {
@@ -40,7 +37,7 @@ public class LinkedList<T> implements List<T> {
 		// TODO check if dataIndex is valid
 		Node<T> newNode = new Node<T>();
 		newNode.data = x;
-		
+
 		if (index == 0) {
 			newNode.next = head.next;
 			head = newNode;
@@ -65,10 +62,12 @@ public class LinkedList<T> implements List<T> {
 		Node<T> newNode = new Node<T>();
 		newNode.data = x;
 		newNode.next = null;
-		
-		if (size == 0)
+
+		if (size == 0) {
 			head = newNode;
-		
+			tail = newNode;
+		}
+
 		tail.next = newNode;
 		tail = newNode;
 		size++;
