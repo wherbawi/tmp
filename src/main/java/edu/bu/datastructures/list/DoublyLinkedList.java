@@ -1,11 +1,11 @@
 package edu.bu.datastructures.list;
 
-public class LinkedList<T> implements List<T> {
+public class DoublyLinkedList<T> implements List<T> {
 	private Node<T> head;
 	private Node<T> tail;
 	private int size;
 
-	public LinkedList() {
+	public DoublyLinkedList() {
 	}
 
 	public int size() {
@@ -48,10 +48,12 @@ public class LinkedList<T> implements List<T> {
 		Node<T> newNode = new Node<T>();
 		newNode.setData(x);
 		newNode.setNext(null);
+		newNode.setPrev(null);
 		if (size == 0) {
 			setHead(newNode);
 			setTail(newNode);
 		} else {
+			newNode.setPrev(getTail());
 			getTail().setNext(newNode);
 			setTail(newNode);
 		}
@@ -80,6 +82,8 @@ public class LinkedList<T> implements List<T> {
 
 	private void addFirstPositionNode(Node<T> newNode) {
 		newNode.setNext(getHead());
+		newNode.setPrev(null);
+		getHead().setPrev(newNode);
 		setHead(newNode);
 		size++;
 	}
@@ -103,6 +107,7 @@ public class LinkedList<T> implements List<T> {
 	class Node<T> {
 		private T data;
 		private Node<T> next;
+		private Node<T> prev;
 
 		public T getData() {
 			return data;
@@ -118,6 +123,14 @@ public class LinkedList<T> implements List<T> {
 
 		public void setNext(Node<T> next) {
 			this.next = next;
+		}
+
+		public Node<T> getPrev() {
+			return prev;
+		}
+
+		public void setPrev(Node<T> prev) {
+			this.prev = prev;
 		}
 	}
 }
