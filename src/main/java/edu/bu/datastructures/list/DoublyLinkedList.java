@@ -23,24 +23,7 @@ public class DoublyLinkedList<T> implements List<T> {
 	}
 
 	public void add(int index, T x) {
-		// TODO check if dataIndex is valid
-		Node<T> newNode = new Node<T>();
-		newNode.setData(x);
-
-		if (index == 0) {
-			addFirstPositionNode(newNode);
-			return;
-		}
-
-		int i = 0;
-		Node<T> currNode = getHead();
-		while (i != index - 1) {
-			currNode = currNode.getNext();
-			i++;
-		}
-		newNode.setNext(currNode.getNext());
-		currNode.setNext(newNode);
-		size++;
+		// TODO implement this method and its tests
 
 	}
 
@@ -78,14 +61,6 @@ public class DoublyLinkedList<T> implements List<T> {
 		}
 
 		return currData.data;
-	}
-
-	private void addFirstPositionNode(Node<T> newNode) {
-		newNode.setNext(getHead());
-		newNode.setPrev(null);
-		getHead().setPrev(newNode);
-		setHead(newNode);
-		size++;
 	}
 
 	public Node<T> getHead() {
@@ -133,4 +108,6 @@ public class DoublyLinkedList<T> implements List<T> {
 			this.prev = prev;
 		}
 	}
+	// TODO: implement the test cases for each public method in this class
+	
 }
